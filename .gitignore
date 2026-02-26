@@ -1,0 +1,11 @@
+.cursor
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.development
+.env.test
+.env.production
+/data
+/supply_chain_validated.csv
