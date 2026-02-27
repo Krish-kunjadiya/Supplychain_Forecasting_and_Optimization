@@ -1,15 +1,16 @@
 ## Supply Chain Forecasting and Optimization
 
-This repository contains an end‑to‑end workflow for **demand forecasting and optimization in a supply chain context**, implemented as a sequence of Jupyter notebooks. It covers data loading and validation, exploratory data analysis, feature engineering, and modeling with both LSTM and XGBoost.
+This repository contains an end-to-end workflow for **demand forecasting and optimization in a supply chain context**, implemented as a sequence of Jupyter notebooks. It covers data loading and validation, exploratory data analysis, feature engineering, and modeling with LSTM, XGBoost, and a hybrid ensemble.
 
 ### Repository structure
 
 - **`01_data_loading_and_validation.ipynb`**: Loads the raw supply chain dataset, performs basic cleaning, handles missing values, validates data types and ranges, and saves a cleaned/validated version of the data for downstream steps.
 - **`02_eda.ipynb`**: Exploratory data analysis of the cleaned dataset, including univariate and multivariate summaries, time series behavior, seasonal patterns, and relationships between key operational variables.
-- **`03_feature_engineering.ipynb`**: Creates modeling features such as time‑based lags, rolling statistics, categorical encodings, and any domain‑specific transformations used by the forecasting models.
-- **`04_lstm_model.ipynb`**: Builds and trains an LSTM‑based deep learning model for time‑series forecasting, including train/validation splits, model architecture, training loops, and evaluation metrics.
-- **`05_xgboost_model.ipynb`**: Trains an XGBoost‑based model using the engineered features as an alternative or benchmark to the LSTM approach.
-- **`data/` (ignored in git)**: Expected location for raw data files such as `supply_chain_dataset1.csv`. This folder is intentionally excluded from version control; you should place your own data here.
+- **`03_feature_engineering.ipynb`**: Creates modeling features such as time-based lags, rolling statistics, categorical encodings, and domain-specific transformations used by the forecasting models.
+- **`04_lstm_model.ipynb`**: Builds and trains an LSTM-based deep learning model for time-series forecasting, including train/validation splits, model architecture, training loops, and evaluation metrics. Saves the best model, test predictions, and per-SKU performance.
+- **`05_xgboost_model.ipynb`**: Trains an XGBoost model using the engineered features as a strong baseline. Saves the tuned model, best hyperparameters, test predictions, and feature importance.
+- **`06_hybrid_model.ipynb`**: Combines LSTM and XGBoost predictions (e.g., via a meta-model or weighted average) to produce a hybrid forecast. Saves hybrid predictions, metrics, and model comparison (e.g., `all_model_comparison.csv`).
+- **`data/` (ignored in git)**: Expected location for raw data files such as `supply_chain_dataset1.csv`. This folder is excluded from version control; place your data here locally.
 
 ### Data
 
@@ -64,20 +65,19 @@ This repository contains an end‑to‑end workflow for **demand forecasting and
    3. `03_feature_engineering.ipynb`
    4. `04_lstm_model.ipynb`
    5. `05_xgboost_model.ipynb`
+   6. `06_hybrid_model.ipynb`
 
-Running them sequentially ensures that each later notebook can reuse the outputs (such as cleaned data and engineered features) generated in the previous steps.
+Running them sequentially ensures that each later notebook can reuse the outputs (cleaned data, engineered features, and saved models) from earlier steps.
 
 ### Modeling overview
 
-- **LSTM model** (`04_lstm_model.ipynb`):
-  - Sequence modeling for time‑series demand forecasting.
-  - Suitable for capturing temporal dependencies, trends, and seasonality.
+- **LSTM** (`04_lstm_model.ipynb`): Sequence-based deep learning for time-series demand forecasting; captures temporal dependencies, trends, and seasonality. Outputs: `lstm_best_model.keras` (or `lstm_final_model.keras`), `lstm_test_predictions.csv`, `lstm_metrics.json`, `lstm_sku_performance.csv`.
 
-- **XGBoost model** (`05_xgboost_model.ipynb`):
-  - Gradient‑boosted trees on engineered features.
-  - Often used as a strong baseline or complementary model alongside deep learning approaches.
+- **XGBoost** (`05_xgboost_model.ipynb`): Gradient-boosted trees on engineered features; strong baseline and interpretable feature importance. Outputs: `xgb_final_model.pkl`, `xgb_best_params.json`, `xgb_test_predictions.csv`, `xgb_metrics.json`, `xgb_sku_performance.csv`.
 
-You can compare the models on metrics such as MAE, MAPE, RMSE, or others defined in the notebooks and choose the most appropriate for your supply chain use case.
+- **Hybrid** (`06_hybrid_model.ipynb`): Combines LSTM and XGBoost predictions (e.g., meta-model or weighted average) for a single ensemble forecast. Outputs: `hybrid_predictions.csv`, `hybrid_metrics.json`, `all_model_comparison.csv`, and optional meta-model artifacts.
+
+Compare models using MAE, MAPE, RMSE, or other metrics in the notebooks and in `all_model_comparison.csv` to choose the best approach for your use case.
 
 ### Reproducibility and extensions
 
@@ -86,9 +86,9 @@ You can compare the models on metrics such as MAE, MAPE, RMSE, or others defined
 - **Operational integration**: The modeling outputs can be integrated into downstream optimization or planning tools (e.g., safety stock calculation, replenishment policies, scenario analysis).
 
 
-**Repo Updates often!!**
+This repository is updated frequently; run notebooks in order and ensure outputs from earlier steps exist before running later ones.
 
 ### License
 
-Specify your preferred license for this project (for example, MIT, Apache‑2.0, or proprietary) and add a corresponding `LICENSE` file if needed.
+Specify your preferred license (e.g., MIT, Apache-2.0, or proprietary) and add a `LICENSE` file if needed.
 
