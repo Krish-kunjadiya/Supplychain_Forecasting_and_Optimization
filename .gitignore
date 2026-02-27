@@ -7,5 +7,5 @@
 .env.development
 .env.test
 .env.production
+*.csv
 /data
-/supply_chain_validated.csv

@@ -1,0 +1,9 @@
+{
+  "MAE": 0.1048,
+  "RMSE": 0.1823,
+  "MAPE": 0.698,
+  "R2": 0.9989,
+  "best_strategy": "XGBoost",
+  "best_lstm_weight": 0.0,
+  "best_xgb_weight": 1.0
+}
