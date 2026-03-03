@@ -1,0 +1,10 @@
+{
+  "cost_saving_vs_original": 104446.4,
+  "pct_cost_saving": 15.45,
+  "stockout_days_reduction": 0,
+  "pct_stockout_reduction": 0,
+  "avg_inventory_change": -459.99,
+  "service_level_target": 0.95,
+  "hybrid_forecast_mape": 0.698,
+  "best_strategy": "XGBoost"
+}
