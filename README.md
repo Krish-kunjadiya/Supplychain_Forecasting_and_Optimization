@@ -1,6 +1,6 @@
 ## Supply Chain Forecasting and Optimization
 
-This repository contains a **complete end-to-end Intelligent Supply Chain Optimization System** that combines advanced demand forecasting with inventory optimization. The workflow is implemented as a sequence of Jupyter notebooks covering data validation, exploratory analysis, feature engineering, multi-model forecasting (LSTM, XGBoost, and hybrid ensemble), and actionable inventory policy optimization.
+This repository contains a **complete end-to-end Intelligent Supply Chain Optimization System** that combines advanced demand forecasting with inventory optimization. The workflow is implemented as a sequence of 8 Jupyter notebooks covering data validation, exploratory analysis, feature engineering, multi-model forecasting (LSTM, XGBoost, and hybrid ensemble), actionable inventory policy optimization, and comprehensive results visualization through an interactive dashboard.
 
 ### 🎯 Project Overview
 
@@ -28,6 +28,8 @@ This system delivers:
 - **`06_hybrid_model.ipynb`**: Ensemble forecasting combining LSTM and XGBoost predictions using multiple strategies (simple average, weighted blending, meta-learner, and dynamic per-SKU weights). Outputs: `hybrid_predictions.csv`, `hybrid_metrics.json`, `all_model_comparison.csv`, `sku_dynamic_weights.csv`.
 
 - **`07_inventory_optimization.ipynb`**: Intelligent inventory policy engine that calculates dynamic reorder points, economic order quantities (EOQ), and safety stock using hybrid forecasts. Performs policy simulation and business value analysis. Outputs: `inventory_policy.csv`, `policy_comparison.csv`, `simulation_results.csv`, `business_value.json`.
+
+- **`08_results_dashboard.ipynb`**: Comprehensive results visualization dashboard consolidating all project metrics, charts, and business insights. Generates executive KPI dashboard, model comparison charts, hybrid forecast analysis, inventory policy impact, business value waterfall, per-SKU winner analysis, and system architecture diagram. Outputs: `dashboard_*.png` (7 charts), `supply_chain_dashboard.html` (interactive HTML report).
 
 #### Data Files
 
@@ -70,6 +72,17 @@ This system delivers:
 - **`policy_comparison.csv`**: Comparison of different inventory strategies.
 - **`simulation_results.csv`**: Simulated inventory trajectories and events.
 - **`business_value.json`**: Cost savings and business impact summary.
+
+#### Dashboard Outputs
+
+- **`dashboard_kpi.png`**: Executive KPI dashboard with 6 key metrics.
+- **`dashboard_model_comparison.png`**: All models comparison chart (7 models × 4 metrics).
+- **`dashboard_hybrid_deepdive.png`**: Hybrid forecast analysis with 4 subplots.
+- **`dashboard_inventory_impact.png`**: Inventory policy impact comparison.
+- **`dashboard_waterfall.png`**: Business value waterfall chart showing cost breakdown.
+- **`dashboard_sku_winners.png`**: Per-SKU winner analysis (LSTM vs XGBoost).
+- **`dashboard_architecture.png`**: System architecture flow diagram.
+- **`supply_chain_dashboard.html`**: Self-contained HTML report with all visualizations for stakeholder sharing.
 
 ### 📊 Data Source
 
@@ -133,6 +146,7 @@ This system delivers:
    5. `05_xgboost_model.ipynb` — XGBoost training
    6. `06_hybrid_model.ipynb` — Ensemble blending
    7. `07_inventory_optimization.ipynb` — Policy optimization
+   8. `08_results_dashboard.ipynb` — Results visualization & HTML dashboard
 
 **Important**: Run notebooks sequentially as each depends on outputs from previous steps.
 
@@ -201,6 +215,22 @@ This system delivers:
   - `simulation_results.csv`
   - `business_value.json`
 
+#### Results Dashboard (`08_results_dashboard.ipynb`)
+- **Visualizations**: 
+  - Executive KPI dashboard with 6 key business metrics
+  - Complete model comparison across all 7 forecasting approaches
+  - Hybrid forecast deep-dive with temporal analysis
+  - Inventory policy impact comparison
+  - Business value waterfall chart
+  - Per-SKU winner analysis (LSTM vs XGBoost)
+  - System architecture flow diagram
+- **Deliverables**:
+  - **7 PNG charts** for presentations and reports
+  - **HTML dashboard** for stakeholder sharing (self-contained, browser-ready)
+- **Outputs**: 
+  - `dashboard_*.png` (7 visualization files)
+  - `supply_chain_dashboard.html`
+
 ### 💼 Business Value
 
 The complete system delivers tangible business benefits:
@@ -212,15 +242,31 @@ The complete system delivers tangible business benefits:
 - **Comprehensive model comparison** ensures selection of best approach
 - **Actionable inventory policies** with reorder points and order quantities
 
-### 🔧 Key Features
+### � Dashboard & Reporting
 
-- **Complete end-to-end pipeline**: From raw data to actionable inventory policies
+The project includes a professional results dashboard featuring:
+
+- **Executive KPI Summary**: 6-panel dark-themed dashboard showing hybrid forecast MAPE (0.698%), R² (0.999), cost savings ($104,446), stockout reduction (44 days), best strategy, and service level target
+- **Model Performance Comparison**: Side-by-side comparison of all 7 models (Naive Baseline, LSTM, XGBoost, 4 Hybrid strategies) across 4 metrics
+- **Hybrid Forecast Analysis**: Deep-dive into hybrid model performance with timeline plots, prediction scatter, residual analysis, and error distributions
+- **Inventory Policy Impact**: Cost breakdown, stockout days comparison, and average inventory levels across Original, Baseline, and Hybrid policies
+- **Business Value Waterfall**: Visual breakdown of cost savings by category (holding, ordering, stockout)
+- **Per-SKU Winner Analysis**: Detailed comparison showing which model (LSTM vs XGBoost) performs best for each SKU-warehouse combination
+- **System Architecture**: Full pipeline flow diagram from raw data to business value
+
+**HTML Report**: All visualizations are compiled into a self-contained HTML file (`supply_chain_dashboard.html`) that can be opened in any browser and shared with stakeholders—no dependencies required.
+
+### �🔧 Key Features
+
+- **Complete end-to-end pipeline**: From raw data to actionable inventory policies and executive dashboards
 - **Multiple forecasting approaches**: LSTM, XGBoost, and ensemble methods
 - **Comprehensive evaluation**: MAE, RMSE, MAPE, R² metrics with per-SKU analysis
 - **Feature engineering registry**: Tracked and documented feature transformations
 - **Inventory optimization**: Dynamic ROP, EOQ, and safety stock calculations
 - **Business value quantification**: Cost savings and operational impact analysis
-- **Extensive visualizations**: Time series plots, feature importance, inventory trajectories
+- **Professional visualizations**: 7 publication-ready charts covering all aspects of the system
+- **Interactive HTML dashboard**: Self-contained report for stakeholder presentations
+- **Dark-themed aesthetics**: Modern, professional visualization design
 
 ### 🔄 Reproducibility & Extensions
 
@@ -237,6 +283,8 @@ The complete system delivers tangible business benefits:
 - **Advanced optimization**: Add constraints for storage capacity, budget limits
 - **Sensitivity analysis**: Test robustness to lead time and demand variability
 - **Integration**: Connect to ERP systems or warehouse management platforms
+- **Interactive dashboards**: Build Plotly Dash or Streamlit web apps for real-time monitoring
+- **Automated reporting**: Schedule periodic HTML report generation and email distribution
 
 ### 📝 Project Workflow
 
@@ -250,7 +298,8 @@ graph TD
     E --> G[06: Hybrid Ensemble]
     F --> G
     G --> H[07: Inventory Optimization]
-    H --> I[Business Value & Policies]
+    H --> I[08: Results Dashboard]
+    I --> J[Business Value & HTML Report]
 ```
 
 ### 📄 License
@@ -272,5 +321,5 @@ For questions or suggestions, please open an issue in this repository.
 ---
 
 **Last Updated**: March 2026  
-**Status**: Complete end-to-end pipeline with demonstrated business value
+**Status**: Complete 8-notebook pipeline with comprehensive visualization dashboard and demonstrated business value
 
