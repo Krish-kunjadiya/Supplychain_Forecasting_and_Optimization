@@ -1,0 +1,11 @@
+{
+  "hybrid_mape": 0.7384,
+  "baseline_mape": 17.5071,
+  "mape_improvement": 16.7687,
+  "mae": 0.0765,
+  "rmse": 0.1265,
+  "r2": 0.9998,
+  "total_rows": 76250,
+  "unique_skus": 50,
+  "created_at": "2026-03-20T04:27:14.745780"
+}
