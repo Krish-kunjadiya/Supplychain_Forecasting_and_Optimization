@@ -1,4 +1,14 @@
-.cursor
+# -----------------------------
+# Editor and OS files
+# -----------------------------
+.cursor/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# -----------------------------
+# Environment and secrets
+# -----------------------------
 .env
 .env.local
 .env.development.local
@@ -7,5 +17,51 @@
 .env.development
 .env.test
 .env.production
-*.csv
-/data
+
+# -----------------------------
+# Python / Jupyter artifacts
+# -----------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+.venv/
+venv/
+
+# -----------------------------
+# Frontend (Next.js) artifacts
+# -----------------------------
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/.turbo/
+frontend/.vercel/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/pnpm-debug.log*
+
+# -----------------------------
+# Project runtime/generated data
+# -----------------------------
+data/
+uploads/
+outputs/
+
+# Trained model binaries
+models/*.keras
+models/*.h5
+models/*.pkl
+models/*.joblib
+
+# General logs/temp files
+*.log
+*.tmp
